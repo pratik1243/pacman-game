@@ -179,3 +179,9 @@ body {
   position: absolute;
   pointer-events: none;
 }
+
+.pac-death-sound {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
