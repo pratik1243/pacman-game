@@ -23,11 +23,11 @@ let pacMan = document.querySelector(".pac-body");
 let gameOver = document.querySelector(".game-over-sec");
 let playBtn = document.querySelector(".play-again-btn");
 let pacEatSound = document.querySelector(".pac-eat-sound");
-let pacDeathSound = document.querySelector(".pac-death-sound");
 let countSec = document.querySelector(".count");
 let gameSec = document.querySelector(".game-sec");
 let gameStartSec = document.querySelector(".game-start-sec");
 let startBtn = document.querySelector(".start-game-btn");
+let keyBtn = document.querySelectorAll(".key-btn");
 
 function foodPosition() {
   let foodXPosition = Math.floor(Math.random() * 81);
@@ -43,7 +43,8 @@ function movepacMan() {
   let foodY = window.getComputedStyle(food).getPropertyValue("top");
 
   if (x == 800 || x == 0 || y == 0 || y == 470) {
-    pacDeathSound.play();
+    pacEatSound.setAttribute("src", "/resources/pacman_death.wav");
+    pacEatSound.play();
     clearInterval(pacManTime);
     food.style.display = "none";
     pacMan.style.display = "none";
@@ -111,6 +112,30 @@ document.addEventListener("keydown", function (event) {
       direction = "left";
     }
   }
+});
+
+keyBtn.forEach((key) => {
+  key.addEventListener("click", function (event) {
+    let keyType = event.currentTarget.dataset.id;
+
+    if (keyType == "ArrowUp") {
+      if (direction == "left" || direction == "right") {
+        direction = "top";
+      }
+    } else if (keyType == "ArrowDown") {
+      if (direction == "left" || direction == "right") {
+        direction = "bottom";
+      }
+    } else if (keyType == "ArrowRight") {
+      if (direction == "top" || direction == "bottom") {
+        direction = "right";
+      }
+    } else if (keyType == "ArrowLeft") {
+      if (direction == "top" || direction == "bottom") {
+        direction = "left";
+      }
+    }
+  });
 });
 
 playBtn.addEventListener("click", function () {
