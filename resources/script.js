@@ -23,6 +23,7 @@ let pacMan = document.querySelector(".pac-body");
 let gameOver = document.querySelector(".game-over-sec");
 let playBtn = document.querySelector(".play-again-btn");
 let pacEatSound = document.querySelector(".pac-eat-sound");
+let pacDeathSound = document.querySelector(".pac-death-sound");
 let countSec = document.querySelector(".count");
 let gameSec = document.querySelector(".game-sec");
 let gameStartSec = document.querySelector(".game-start-sec");
@@ -43,8 +44,7 @@ function movepacMan() {
   let foodY = window.getComputedStyle(food).getPropertyValue("top");
 
   if (x == 800 || x == 0 || y == 0 || y == 470) {
-    pacEatSound.setAttribute("src", "/resources/pacman_death.wav");
-    pacEatSound.play();
+    pacDeathSound.play();
     clearInterval(pacManTime);
     food.style.display = "none";
     pacMan.style.display = "none";
