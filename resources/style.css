@@ -220,6 +220,10 @@ body {
     width: fit-content;
   }
 
+  .pac-sec {
+    margin-top: 150px !important;
+  }
+
   .move-btn-sec {
     display: flex;
     justify-content: space-evenly;
